@@ -121,7 +121,11 @@ def parse_html(file_path):
             elif 'Category' in text:
                 vehicle['category'] = text.split(':')[1].strip()
             elif 'Specs' in text:
-                vehicle['specs'] = text.split('Specs: ')[1].strip()
+                # Check if there's text after "Specs: "
+                if len(text.split('Specs: ')) > 1:
+                    vehicle['specs'] = text.split('Specs: ')[1].strip()
+                else:
+                    vehicle['specs'] = "N/A"  # Assign a default value if Specs is empty
 
         # Get the new 'time left' value
         time_left_tag = card.find('div', class_='vehicle-detailstime')
