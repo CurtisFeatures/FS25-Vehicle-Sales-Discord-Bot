@@ -7,7 +7,8 @@ A project to track and display vehicles for sale in Farming Simulator 2025. It i
 
 Author: Jamie Curtis
 Date Created: 14/11/2024
-Last Updated: 14/11/2024
+Last Updated: 15/11/2024
+Version: 1.1
 GitHub Repository: https://github.com/CurtisFeatures/FS25-Vehicle-Sales-Discord-Bot/
 """
 
@@ -205,12 +206,14 @@ for item in root.findall('item'):
     filename = item.get('xmlFilename')
     price = item.get('price')
     age = item.get('age')
+    age_years = int(age) // 12
+    age_months = int(age) % 12
+    age_formatted = f"{age_years} years, {age_months} months" if age_years > 0 else f"{age_months} months"
     damage = item.get('damage')
     wear = item.get('wear')
     time_left = item.get('timeLeft')
-    operating_time_minutes = float(item.get('operatingTime', 0))
-    operating_time_hours = round(operating_time_minutes / 60, 1)
-
+    operating_time_seconds = float(item.get('operatingTime', 0))
+    operating_time_hours = round(operating_time_seconds / 3600, 1)
     vehicle_details = parse_vehicle_details(filename, output_folder=png_path)
     name = vehicle_details['name'] if vehicle_details else 'Unknown Vehicle'
     specs = vehicle_details['specs'] if vehicle_details else ''
@@ -221,19 +224,19 @@ for item in root.findall('item'):
 
     if vehicle_details:
         html_content += f"""
-        <div class="vehicle-card">
-            <div class="vehicle-title">{vehicle_details['name']}</div>
-            <div class="vehicle-details">Price: £{float(price):,.2f}</div>
-            <div class="vehicle-details">Age: {age} years</div>
-            <div class="vehicle-details">Damage: {float(damage) * 100:.1f}%</div>
-            <div class="vehicle-details">Wear: {float(wear) * 100:.1f}%</div>
-            <div class="vehicle-details">Operating Time: {operating_time_hours} hours</div>
-            <div class="vehicle-details">Time Left: {time_left} hours</div>
-        <div class="vehicle-detailstime">{time_left}</div>
-            <div class="vehicle-details">Brand: {vehicle_details['brand']}</div>
-            <div class="vehicle-details">Category: {vehicle_details['category']}</div>
-            <div class="vehicle-details">Specs: {vehicle_details['specs']}</div>
-            <div class="vehicle-details">
+    <div class="vehicle-card">
+    <div class="vehicle-title">{name}</div>
+    <div class="vehicle-details">Price: £{float(price):,.2f}</div>
+    <div class="vehicle-details">Age: {age_formatted}</div>
+    <div class="vehicle-details">Damage: {float(damage) * 100:.1f}%</div>
+    <div class="vehicle-details">Wear: {float(wear) * 100:.1f}%</div>
+    <div class="vehicle-details">Operating Time: {operating_time_hours} hours</div>
+    <div class="vehicle-details">Time Left: {time_left} hours</div>
+    <div class="vehicle-detailstime">{time_left}</div>                                                      
+    <div class="vehicle-details">Brand: {brand}</div>
+    <div class="vehicle-details">Category: {category}</div>
+    <div class="vehicle-details">Specs: {specs}</div>
+    <div class="vehicle-details">
                 <a href="https://YOUR-DOMAIN-HERE/{os.path.basename(vehicle_details['image'])}" target="_blank">
             <img src="{os.path.join(png_path, os.path.basename(vehicle_details['image']))}" alt="{vehicle_details['name']} image" class="vehicle-image" />
         </a>

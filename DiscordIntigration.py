@@ -7,7 +7,8 @@ A project to track and display vehicles for sale in Farming Simulator 2025. It i
 
 Author: Jamie Curtis
 Date Created: 14/11/2024
-Last Updated: 14/11/2024
+Last Updated: 15/11/2024
+Version: 1.1
 GitHub Repository: https://github.com/CurtisFeatures/FS25-Vehicle-Sales-Discord-Bot/
 """
 
@@ -76,7 +77,7 @@ async def send_vehicle_data(vehicle):
     # Create an embed to send to Discord
     embed = discord.Embed(title=vehicle['name'], description=vehicle['specs'], color=0x00ff00)
     embed.add_field(name="Price", value=f"£{vehicle['price']}", inline=False)
-    embed.add_field(name="Age", value=f"{vehicle['age']} years", inline=True)
+    embed.add_field(name="Age", value=f"{vehicle['age']} ", inline=True)
     embed.add_field(name="Damage", value=f"{vehicle['damage']}", inline=True)
     embed.add_field(name="Wear", value=f"{vehicle['wear']}", inline=True)
     embed.add_field(name="Operating Time", value=f"{vehicle['operating_time']} ", inline=True)
