@@ -55,7 +55,7 @@ The second script is a Discord bot that reads the generated HTML page and posts 
 2.  Update the `TOKEN` and `CHANNEL_ID` variables in the script with your bot's token and desired Discord channel ID.
 3.  HTTP/HTTPS access to converted files are required - Update the URL (Line 29)<br>
    `BASE_URL = 'https://YOUR-DOMAIN-HERE/'  # URL where images are stored`<br>
-4. Update HTML Location Path (Line 144)<br>
+4. Update HTML Location Path (Line 148)<br>
    `vehicles = parse_html(r'C:\DiscordBots1\Sales\vehicles_on_sale.html')`<br>
 5.  Run the bot script to start the bot.
 
