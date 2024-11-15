@@ -27,7 +27,7 @@ The first script reads the sales XML file for vehicles in the *Farming Simulato
 **How to Run:**
 
 1.  Make sure the paths for the `sales.xml`, `data` folder, and `mods` folder are correctly set in the script.
-2.  HTTP/HTTPS access to converted files are required - Update the URL (Line 223)<br>
+2.  HTTP/HTTPS access to converted files are required - Update the URL (Line 237)<br>
    `<a href="https://YOUR-DOMAIN-HERE/{os.path.basename(vehicle_details['image'])}" target="_blank">`<br>
 3.  Ensure that the output folder for images exists.
 4.  Execute the script to generate the HTML page.
@@ -53,9 +53,9 @@ The second script is a Discord bot that reads the generated HTML page and posts 
 
 1.  Set up a Discord bot and invite it to your server.
 2.  Update the `TOKEN` and `CHANNEL_ID` variables in the script with your bot's token and desired Discord channel ID.
-3.  HTTP/HTTPS access to converted files are required - Update the URL (Line 14)<br>
+3.  HTTP/HTTPS access to converted files are required - Update the URL (Line 28)<br>
    `BASE_URL = 'https://YOUR-DOMAIN-HERE/'  # URL where images are stored`<br>
-4. Update HTML Location Path (Line 129)<br>
+4. Update HTML Location Path (Line 143)<br>
    `vehicles = parse_html(r'C:\DiscordBots1\Sales\vehicles_on_sale.html')`<br>
 5.  Run the bot script to start the bot.
 
