@@ -72,7 +72,7 @@ The second script is a Discord bot that reads the generated HTML page and posts 
 1.  **HTML Page**: Displays a list of vehicles available for sale with their details, such as price, age, damage, specs, and an image.
 
 
-   <img src="Images/vehicles_on_sale.html.PNG" alt="Alt text" width="50%">
+   <img src="Images/vehicles_on_sale.png" alt="Alt text" width="50%">
 
    
 2.  **Discord Message**: An embed message is sent to Discord with the vehicle's details and image when it qualifies for posting.
